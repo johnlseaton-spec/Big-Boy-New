@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Boy Council | Jon Seaton</title>
+    
+    <!-- Open Graph Meta Tags (For iMessage, Social Media, etc.) -->
+    <meta property="og:title" content="Big Boy Council | Jon Seaton">
+    <meta property="og:description" content="Consistently Hungry. Official apparel and content from Jon Seaton. Join the council.">
+    <meta property="og:image" content="hero.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -39,7 +47,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('uploaded:image.png-bb2826f4-0085-4c5c-a4fd-e5f92bfb682f');
+            /* Local path: hero.jpg */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('hero.jpg');
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -62,7 +71,6 @@
             box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
         }
 
-        /* Fixed Social Card Styling */
         .social-image-link {
             position: relative;
             display: block;
@@ -110,6 +118,11 @@
             border-radius: 8px;
             text-align: center;
             border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-5px);
         }
 
         .badge {
@@ -213,9 +226,9 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- TikTok -->
+                <!-- TikTok: Local path Tik Tok.png -->
                 <a href="https://www.tiktok.com/@jonseaton" target="_blank" rel="noopener noreferrer" class="social-image-link">
-                    <img src="uploaded:image.png-425bd740-39dd-4350-b131-12b4f77b246e" alt="Jon Seaton TikTok Profile">
+                    <img src="Tik Tok.png" alt="Jon Seaton TikTok Profile">
                     <div class="social-overlay">
                         <div class="flex items-center gap-3">
                             <i class="fab fa-tiktok text-3xl text-white"></i>
@@ -225,9 +238,9 @@
                     </div>
                 </a>
 
-                <!-- Instagram -->
+                <!-- Instagram: Local path Instagram.png -->
                 <a href="https://www.instagram.com/sea76n/" target="_blank" rel="noopener noreferrer" class="social-image-link">
-                    <img src="uploaded:image.png-3a1f4079-54c4-4f27-b3f7-7572d52adb50" alt="Jon Seaton Instagram Post">
+                    <img src="Instagram.png" alt="Jon Seaton Instagram Post">
                     <div class="social-overlay">
                         <div class="flex items-center gap-3">
                             <i class="fab fa-instagram text-3xl text-pink-500"></i>
@@ -237,9 +250,9 @@
                     </div>
                 </a>
 
-                <!-- YouTube -->
+                <!-- YouTube: Local path Youtube.png -->
                 <a href="https://www.youtube.com/@jonseaton" target="_blank" rel="noopener noreferrer" class="social-image-link">
-                    <img src="uploaded:image.png-bb2826f4-0085-4c5c-a4fd-e5f92bfb682f" alt="Jon Seaton YouTube Content">
+                    <img src="Youtube.png" alt="Jon Seaton YouTube Content">
                     <div class="social-overlay">
                         <div class="flex items-center gap-3">
                             <i class="fab fa-youtube text-3xl text-red-600"></i>
@@ -264,9 +277,8 @@
                 <!-- Black Tee -->
                 <div class="shop-item relative">
                     <span class="badge">SIGNATURE</span>
-                    <div class="aspect-[3/4] bg-zinc-900 rounded-lg mb-6 overflow-hidden border border-zinc-800 flex flex-col items-center justify-center p-6 text-center">
-                        <i class="fas fa-tshirt text-7xl text-zinc-950 drop-shadow-lg mb-4"></i>
-                        <span class="oswald text-3xl font-black text-zinc-600 italic tracking-tighter uppercase leading-none">BLACK COUNCIL TEE</span>
+                    <div class="aspect-[3/4] bg-zinc-900 rounded-lg mb-6 overflow-hidden border border-zinc-800 flex items-center justify-center">
+                        <img src="BlackT.png" alt="Black Council Tee" class="w-full h-full object-contain">
                     </div>
                     <h3 class="font-bold text-2xl mb-1 oswald uppercase italic tracking-tighter">Black Council Tee</h3>
                     <p class="text-yellow-400 font-black mb-6">$35.00</p>
@@ -276,9 +288,8 @@
                 <!-- White Tee -->
                 <div class="shop-item relative">
                     <span class="badge">SIGNATURE</span>
-                    <div class="aspect-[3/4] bg-zinc-900 rounded-lg mb-6 overflow-hidden border border-zinc-800 flex flex-col items-center justify-center p-6 text-center">
-                        <i class="fas fa-tshirt text-7xl text-zinc-200 drop-shadow-lg mb-4"></i>
-                        <span class="oswald text-3xl font-black text-zinc-600 italic tracking-tighter uppercase leading-none">WHITE COUNCIL TEE</span>
+                    <div class="aspect-[3/4] bg-zinc-900 rounded-lg mb-6 overflow-hidden border border-zinc-800 flex items-center justify-center">
+                        <img src="WhiteT.png" alt="White Council Tee" class="w-full h-full object-contain">
                     </div>
                     <h3 class="font-bold text-2xl mb-1 oswald uppercase italic tracking-tighter">White Council Tee</h3>
                     <p class="text-yellow-400 font-black mb-6">$35.00</p>
@@ -293,8 +304,8 @@
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-20">
             <div class="w-full md:w-1/2 relative group">
                 <div class="absolute -top-12 -left-12 w-48 h-48 border-[12px] border-yellow-400/10 -z-10 group-hover:border-yellow-400/20 transition-colors"></div>
-                <!-- Fixed Founder Portrait -->
-                <img src="uploaded:image.png-425bd740-39dd-4350-b131-12b4f77b246e" alt="Jon Seaton Portrait" class="rounded-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-zinc-800 transition-all duration-700 block w-full">
+                <!-- Local path: portrait.png -->
+                <img src="portrait.png" alt="Jon Seaton Portrait" class="rounded-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-zinc-800 transition-all duration-700 block w-full">
                 <div class="absolute -bottom-6 -right-6 bg-yellow-400 text-black px-6 py-4 font-black italic oswald text-2xl shadow-2xl tracking-tighter">
                     JON SEATON
                 </div>
@@ -314,8 +325,8 @@
                         <div class="text-[10px] uppercase text-gray-500 font-black tracking-[0.2em] mt-2">Instagram</div>
                     </div>
                     <div class="text-center bg-black/50 p-6 rounded-xl border border-zinc-800 shadow-xl">
-                        <div class="oswald text-4xl font-black text-yellow-400 italic">SEC</div>
-                        <div class="text-[10px] uppercase text-gray-500 font-black tracking-[0.2em] mt-2">D1 Level</div>
+                        <div class="oswald text-4xl font-black text-yellow-400 italic">13K</div>
+                        <div class="text-[10px] uppercase text-gray-500 font-black tracking-[0.2em] mt-2">YouTube</div>
                     </div>
                 </div>
             </div>
