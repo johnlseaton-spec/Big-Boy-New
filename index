@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Boy Council | Jon Seaton</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;900&display=swap');
+
+        :root {
+            --primary: #facc15; /* Athletic Yellow */
+            --bg-dark: #0a0a0a;
+            --accent-gray: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .oswald { font-family: 'Oswald', sans-serif; }
+        
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('uploaded:image.png-bb2826f4-0085-4c5c-a4fd-e5f92bfb682f');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: black;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+        }
+
+        /* Fixed Social Card Styling */
+        .social-image-link {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: #111;
+        }
+
+        .social-image-link:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .social-image-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .social-image-link:hover img {
+            transform: scale(1.1);
+        }
+
+        .social-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            pointer-events: none;
+        }
+
+        .shop-item {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .badge {
+            background: var(--primary);
+            color: black;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 8px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 border-b border-white/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="oswald text-2xl font-bold tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">
+                BIG BOY <span class="text-yellow-400">COUNCIL</span>
+            </div>
+            <div class="hidden md:flex space-x-8 oswald uppercase tracking-widest font-bold text-sm">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#content" class="nav-link">Socials</a>
+                <a href="#shop" class="nav-link">The Shop</a>
+                <a href="#about" class="nav-link">About Jon</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#shop" class="relative group">
+                    <i class="fas fa-shopping-cart text-xl group-hover:text-yellow-400 transition-colors"></i>
+                    <span class="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-bold px-1.5 rounded-full">2</span>
+                </a>
+                <button class="md:hidden" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-center px-4">
+        <div class="hero-bg"></div>
+        <div class="max-w-4xl relative z-10">
+            <h1 class="oswald text-7xl md:text-9xl font-black italic text-white mb-4 tracking-tighter leading-none">
+                CONSISTENTLY <span class="text-yellow-400">HUNGRY.</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 font-light text-gray-200 uppercase tracking-[0.2em]">Big Boy Council &bull; Jon Seaton</p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="#shop" class="btn-primary">Shop Apparel</a>
+                <a href="#content" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded border border-white/20 transition backdrop-blur-sm">Connect Socially</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Council Feed Section -->
+    <section id="content" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <h2 class="section-title">The Feed</h2>
+                    <p class="mt-4 text-gray-400 uppercase tracking-widest text-xs font-bold">Join the Council across all platforms</p>
+                </div>
+                <p class="text-gray-500 max-w-sm font-light italic text-sm">Direct links to official profiles. Tap any image to view.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@jonseaton" target="_blank" rel="noopener noreferrer" class="social-image-link">
+                    <img src="uploaded:image.png-425bd740-39dd-4350-b131-12b4f77b246e" alt="Jon Seaton TikTok Profile">
+                    <div class="social-overlay">
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-tiktok text-3xl text-white"></i>
+                            <span class="oswald font-bold text-2xl uppercase tracking-wider">TikTok</span>
+                        </div>
+                        <p class="text-xs text-yellow-400 font-black mt-2 uppercase tracking-[0.2em]">1.8M Followers</p>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/sea76n/" target="_blank" rel="noopener noreferrer" class="social-image-link">
+                    <img src="uploaded:image.png-3a1f4079-54c4-4f27-b3f7-7572d52adb50" alt="Jon Seaton Instagram Post">
+                    <div class="social-overlay">
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-instagram text-3xl text-pink-500"></i>
+                            <span class="oswald font-bold text-2xl uppercase tracking-wider">Instagram</span>
+                        </div>
+                        <p class="text-xs text-yellow-400 font-black mt-2 uppercase tracking-[0.2em]">500K Followers</p>
+                    </div>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@jonseaton" target="_blank" rel="noopener noreferrer" class="social-image-link">
+                    <img src="uploaded:image.png-bb2826f4-0085-4c5c-a4fd-e5f92bfb682f" alt="Jon Seaton YouTube Content">
+                    <div class="social-overlay">
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-youtube text-3xl text-red-600"></i>
+                            <span class="oswald font-bold text-2xl uppercase tracking-wider">YouTube</span>
+                        </div>
+                        <p class="text-xs text-yellow-400 font-black mt-2 uppercase tracking-[0.2em]">13K Subscribers</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- T-Shirt Shop -->
+    <section id="shop" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <h2 class="section-title">The Collection</h2>
+                <p class="text-gray-400 max-w-md font-light italic leading-relaxed">Official Big Boy Council Apparel. Designed for the heavyweight frame.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Black Tee -->
+                <div class="shop-item relative">
+                    <span class="badge">SIGNATURE</span>
+                    <div class="aspect-[3/4] bg-zinc-900 rounded-lg mb-6 overflow-hidden border border-zinc-800 flex flex-col items-center justify-center p-6 text-center">
+                        <i class="fas fa-tshirt text-7xl text-zinc-950 drop-shadow-lg mb-4"></i>
+                        <span class="oswald text-3xl font-black text-zinc-600 italic tracking-tighter uppercase leading-none">BLACK COUNCIL TEE</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-1 oswald uppercase italic tracking-tighter">Black Council Tee</h3>
+                    <p class="text-yellow-400 font-black mb-6">$35.00</p>
+                    <button class="w-full bg-white text-black py-4 rounded font-black text-sm uppercase hover:bg-yellow-400 transition" onclick="addToCart('Black Council Tee')">Add To Cart</button>
+                </div>
+
+                <!-- White Tee -->
+                <div class="shop-item relative">
+                    <span class="badge">SIGNATURE</span>
+                    <div class="aspect-[3/4] bg-zinc-900 rounded-lg mb-6 overflow-hidden border border-zinc-800 flex flex-col items-center justify-center p-6 text-center">
+                        <i class="fas fa-tshirt text-7xl text-zinc-200 drop-shadow-lg mb-4"></i>
+                        <span class="oswald text-3xl font-black text-zinc-600 italic tracking-tighter uppercase leading-none">WHITE COUNCIL TEE</span>
+                    </div>
+                    <h3 class="font-bold text-2xl mb-1 oswald uppercase italic tracking-tighter">White Council Tee</h3>
+                    <p class="text-yellow-400 font-black mb-6">$35.00</p>
+                    <button class="w-full bg-white text-black py-4 rounded font-black text-sm uppercase hover:bg-yellow-400 transition" onclick="addToCart('White Council Tee')">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-zinc-900 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-20">
+            <div class="w-full md:w-1/2 relative group">
+                <div class="absolute -top-12 -left-12 w-48 h-48 border-[12px] border-yellow-400/10 -z-10 group-hover:border-yellow-400/20 transition-colors"></div>
+                <!-- Fixed Founder Portrait -->
+                <img src="uploaded:image.png-425bd740-39dd-4350-b131-12b4f77b246e" alt="Jon Seaton Portrait" class="rounded-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-zinc-800 transition-all duration-700 block w-full">
+                <div class="absolute -bottom-6 -right-6 bg-yellow-400 text-black px-6 py-4 font-black italic oswald text-2xl shadow-2xl tracking-tighter">
+                    JON SEATON
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="section-title mb-10 italic">The Founder</h2>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed font-light">
+                    From walk-on roots at <strong>Elon University</strong> to competing with the <strong>Ole Miss Rebels</strong>, Jon built the Big Boy Council to celebrate the raw, funny, and powerful reality of the heavyweight athlete.
+                </p>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="text-center bg-black/50 p-6 rounded-xl border border-zinc-800 shadow-xl">
+                        <div class="oswald text-4xl font-black text-yellow-400 italic">1.8M</div>
+                        <div class="text-[10px] uppercase text-gray-500 font-black tracking-[0.2em] mt-2">TikTok</div>
+                    </div>
+                    <div class="text-center bg-black/50 p-6 rounded-xl border border-zinc-800 shadow-xl">
+                        <div class="oswald text-4xl font-black text-yellow-400 italic">500K</div>
+                        <div class="text-[10px] uppercase text-gray-500 font-black tracking-[0.2em] mt-2">Instagram</div>
+                    </div>
+                    <div class="text-center bg-black/50 p-6 rounded-xl border border-zinc-800 shadow-xl">
+                        <div class="oswald text-4xl font-black text-yellow-400 italic">SEC</div>
+                        <div class="text-[10px] uppercase text-gray-500 font-black tracking-[0.2em] mt-2">D1 Level</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-16 text-center md:text-left">
+            <div class="col-span-1 md:col-span-2">
+                <div class="oswald text-4xl font-bold mb-6 italic tracking-tighter">BIG BOY <span class="text-yellow-400">COUNCIL</span></div>
+                <p class="text-gray-500 max-w-sm mx-auto md:mx-0 mb-8 font-light italic leading-relaxed">Content, Apparel, and Community for the guys in the trenches.</p>
+                <div class="flex justify-center md:justify-start space-x-8 text-3xl">
+                    <a href="https://www.tiktok.com/@jonseaton" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-all hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/sea76n/" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-all hover:scale-110"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@jonseaton" target="_blank" rel="noopener noreferrer" class="hover:text-yellow-400 transition-all hover:scale-110"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="oswald text-xl font-bold mb-6 uppercase text-yellow-400 tracking-widest italic text-sm">Navigation</h4>
+                <ul class="space-y-4 text-gray-400 font-black text-[10px] uppercase tracking-[0.2em]">
+                    <li><a href="#home" class="hover:text-white transition-colors">Home Base</a></li>
+                    <li><a href="#shop" class="hover:text-white transition-colors">The Council Shop</a></li>
+                    <li><a href="#content" class="hover:text-white transition-colors">Connect Socially</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="oswald text-xl font-bold mb-6 uppercase text-yellow-400 tracking-widest italic text-sm">Council List</h4>
+                <form class="flex" onsubmit="event.preventDefault(); showToast('Welcome to the Council!')">
+                    <input type="email" placeholder="EMAIL" class="bg-zinc-900 border border-zinc-700 px-4 py-2 w-full focus:outline-none focus:border-yellow-400 text-white rounded-l-md font-bold text-xs">
+                    <button class="bg-yellow-400 text-black px-4 py-2 font-black rounded-r-md hover:bg-white transition-colors">GO</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-20 text-center text-gray-600 text-[10px] font-black uppercase tracking-[0.4em]">
+            &copy; 2026 Big Boy Council &bull; Jon Seaton &bull; Ole Miss Rebels
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div id="toast" class="fixed bottom-10 right-10 bg-yellow-400 text-black font-black px-8 py-4 rounded-md shadow-2xl transform translate-y-32 transition-transform duration-500 z-[100] border-2 border-white/20">
+        ADDED TO COUNCIL CART!
+    </div>
+
+    <script>
+        function addToCart(item) {
+            showToast(`Added ${item} to Council Cart!`);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32');
+            }, 3000);
+        }
+
+        // Mobile Menu
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        mobileBtn.addEventListener('click', () => {
+            showToast('Council Mobile Menu Ready Soon');
+        });
+
+        // Hero Parallax
+        window.addEventListener('scroll', () => {
+            const bg = document.querySelector('.hero-bg');
+            if(bg) {
+                let offset = window.pageYOffset;
+                bg.style.backgroundPositionY = offset * 0.4 + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
